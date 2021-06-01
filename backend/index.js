@@ -40,9 +40,15 @@ app.get('/', (req,res) => {
 })
 
 //import Routes
-import { userRoute }  from './src/routes/index.js';
+import { 
+  userRoute,
+  taskRoute,
+  subtaskRoute
+ }  from './src/routes/index';
 
 app.use('/api',userRoute);
+app.use('/api',taskRoute);
+app.use('/api', subtaskRoute);
 
 const PORT = process.env.PORT || 3000;
 

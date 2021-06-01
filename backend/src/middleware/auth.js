@@ -4,7 +4,7 @@ import User from '../models/User';
 const auth = async (req, res, next) => {
   try {
     const token = req.header('Authorization').replace('Bearer ', '');
-    const data = jwt.verify(token, process.env.JWT_KEY);
+    const data = await jwt.verify(token, process.env.JWT_KEY);
 
     // koz server ka htoke tae user lr check tr
     const user = await User.findOne({ _id: data._id, 'tokens.token': token });
@@ -21,7 +21,7 @@ const auth = async (req, res, next) => {
     res.status(401).send({
       error: {
         status: true,
-        message: 'Unauthorized Action',
+        message: e.message,
       },
       data: null,
     });
