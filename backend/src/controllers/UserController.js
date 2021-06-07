@@ -4,7 +4,7 @@ export const checkUserExists = async (req,res) => {
     try {
         const isUserExisted = await User.findOne({ email: req.body.email });
         if(isUserExisted) {
-            res.status(400).send({
+            return res.status(400).send({
                 error: {
                     status: true,
                     message: "User is already existed"

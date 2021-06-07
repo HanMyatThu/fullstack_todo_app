@@ -1,13 +1,13 @@
 import Aws from 'aws-sdk';
 
 const config = {
-    accessKeyId: 'AKIAYZOLCUJ5KLTNFHW6',
-    secretAccessKey: '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',
-    region: 'ap-southeast-1',
+    accessKeyId:  process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+    region: process.env.AWS_REGION,
 };
 
 const params = {
-    Bucket: 'draz-demo-bucket',
+    Bucket: AWS_BUCKET,
 };
 
 // export const UploadToAws = async () => {
